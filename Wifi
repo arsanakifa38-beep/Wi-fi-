@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>WiFi Hacker Pro</title>
+<style>
+body {
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 20px;
+}
+
+.terminal {
+    border: 2px solid #00ff00;
+    padding: 20px;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+input, button {
+    background: black;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px;
+    margin: 5px;
+}
+
+.progress {
+    width: 100%;
+    background: #003300;
+    margin-top: 10px;
+}
+
+.bar {
+    width: 0%;
+    height: 20px;
+    background: #00ff00;
+}
+</style>
+</head>
+<body>
+
+<h3>WiFi Hacker Pro 😈</h3>
+
+<input type="text" id="nama" placeholder="Nama target">
+<input type="text" id="wifi" placeholder="Nama WiFi">
+<button onclick="startHack()">Mulai Hack</button>
+
+<div class="terminal" id="terminal"></div>
+
+<div class="progress">
+    <div class="bar" id="bar"></div>
+</div>
+
+<script>
+function startHack() {
+    const nama = document.getElementById("nama").value || "TARGET";
+    const wifi = document.getElementById("wifi").value || "WIFI_TARGET";
+
+    const terminal = document.getElementById("terminal");
+    const bar = document.getElementById("bar");
+
+    terminal.innerHTML = "";
+    let steps = [
+        "> Mengidentifikasi target: " + nama,
+        "> Scanning jaringan...",
+        "> Ditemukan WiFi: " + wifi,
+        "> Mengakses router...",
+        "> Bypassing firewall...",
+        "> Cracking password...",
+        "> Akses berhasil!"
+    ];
+
+    let i = 0;
+    let progress = 0;
+
+    function run() {
+        if (i < steps.length) {
+            terminal.innerHTML += steps[i] + "<br>";
+            terminal.scrollTop = terminal.scrollHeight;
+            i++;
+            setTimeout(run, 1000);
+        }
+    }
+
+    function load() {
+        if (progress < 100) {
+            progress++;
+            bar.style.width = progress + "%";
+            setTimeout(load, 50);
+        } else {
+            terminal.innerHTML += "<br>> PASSWORD WIFI: 12345678 😈";
+        }
+    }
+
+    run();
+    load();
+}
+</script>
+
+</body>
+</html>
